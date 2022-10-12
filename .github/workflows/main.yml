@@ -20,7 +20,7 @@ jobs:  #Workflow run is made up of one or more jobs
         # Created the Secrets Under the Repo only with These Variables
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }} 
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1 #--> Define Region of the AWS-CLI 
+          aws-region: us-east-1 
       - name: npm install
         env:
           CI: true
@@ -29,5 +29,4 @@ jobs:  #Workflow run is made up of one or more jobs
       - name: deploy
         run: |
           zip hello_lambda.zip ./* #--> Zip the Code As we know lambda function accept the zip file.
-          aws lambda update-function-code --function-name=test --zip-file=fileb://hello_lambda.zip 
-# At last the AWS CLI command to Update the Zip file with existing One (With Correct Function Name)
+          aws lambda update-function-code --function-name=TP-function_app --zip-file=fileb://hello_lambda.zip 
