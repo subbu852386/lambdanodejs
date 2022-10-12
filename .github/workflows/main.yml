@@ -1,7 +1,7 @@
 name: Deploy #Name of the Workflow
 
-on: lambda #Name of the GitHub event that triggers the workflow
-push: lambdafunction  #On Push Event We need to take action
+on: main #Name of the GitHub event that triggers the workflow
+push: main  #On Push Event We need to take action
 branches:  #Now we need to specify the branch name
     - main   
 
