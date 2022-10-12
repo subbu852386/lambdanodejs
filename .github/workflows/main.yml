@@ -1,9 +1,9 @@
 name: Deploy #Name of the Workflow
 
-on: lambda  #Name of the GitHub event that triggers the workflow
-  push: lambdafunction  #On Push Event We need to take action
+on:  #Name of the GitHub event that triggers the workflow
+  push:   #On Push Event We need to take action
     branches:  #Now we need to specify the branch name
-    - main   
+    - master   
 
 jobs:  #Workflow run is made up of one or more jobs
   deploy_lambda:
@@ -26,9 +26,8 @@ jobs:  #Workflow run is made up of one or more jobs
           CI: true
         run: |
           npm ci 
-          npm run build --if-present
       - name: deploy
         run: |
-          zip hello_lambda.zip deploy.zip ./* #--> Zip the Code As we know lambda function accept the zip file.
-          aws lambda update-function-code --function-name=testTP-function_app --zip-file=fileb://deployhello_lambda.zip
-
+          zip hello_lambda.zip ./* #--> Zip the Code As we know lambda function accept the zip file.
+          aws lambda update-function-code --function-name=test --zip-file=fileb://hello_lambda.zip 
+# At last the AWS CLI command to Update the Zip file with existing One (With Correct Function Name)
